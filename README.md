@@ -17,5 +17,9 @@ Naughts and Crosses (Tic-Tac-Toe) is simple game played on a 3x3 grid, by two pl
 ###### Image Reproduced from wikipedia.org/wiki/Tic-tac-toe
 
 
+## Naughts and Crosses: Intelligence
+### The Evaluation Function
+In order to play the game intelligently the player must consider their own move, but also the opposing player's following move, and future moves. This intelligence is intuitive to humans; often it is completely sub-concious. The goal of an Intelligent agent is the Evalutation Function. The Evaluation Function evaluates the possible moves and the state of the board, assigning each possible move a value that represents the power of that move in relation to the current (and future) game state. 
+
 ## Agents
 ### 
