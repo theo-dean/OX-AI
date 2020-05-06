@@ -1,5 +1,8 @@
 # OX-AI
-An Artificial Intelligence agent that plays Naughts and Crosses, implemented in 3 different ways.\\\
+An Artificial Intelligence agent that plays Naughts and Crosses, implemented in 3 different ways.\
+\
+\
+\
 
 ## Brief
 The goal of this project is to create 3 different Artificial Intellegent agents that are able to play the board game "naughts and crosses".
