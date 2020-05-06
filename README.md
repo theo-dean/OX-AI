@@ -4,7 +4,8 @@ An Artificial Intelligence agent that plays Naughts and Crosses, implemented in 
 /
 /
 /
-/## Brief
+/
+## Brief
 The goal of this project is to create 3 different Artificial Intellegent agents that are able to play the board game "naughts and crosses".
 To demonstrate the ability of these agents, a simple web application will be developed, allowing a user to play naughts and crosses with one of the AI agents.
 
