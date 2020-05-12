@@ -1,0 +1,19 @@
+* {
+  background: cadetblue;
+}
+
+
+.grid-container {
+  display: grid;
+  grid-template-columns: 256px 256px 256px;
+  grid-template-rows: 256px 256px 256px;
+  padding: 5px;
+}
+.grid-item {
+  background-color: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(0, 0, 0, 0.8);
+  padding: 0px;
+  font-size: 30px;
+}
+
+

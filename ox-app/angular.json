@@ -119,6 +119,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "ox-app"
+    }
+  },
+  "defaultProject": "ox-app",
+  "cli": {
+    "analytics": "b1b9ac74-6218-40c4-b785-9f4ee4920dfa"
+  }
 }

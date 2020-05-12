@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { GameGridComponent } from './game-grid/game-grid.component';
 
 @Component({
   selector: 'app-root',

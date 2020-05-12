@@ -3,10 +3,12 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { GameGridComponent } from './game-grid/game-grid.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    GameGridComponent
   ],
   imports: [
     BrowserModule,
