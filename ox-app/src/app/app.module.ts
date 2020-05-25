@@ -4,11 +4,13 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { GameGridComponent } from './game-grid/game-grid.component';
+import { RandomAIComponent } from './random-ai/random-ai.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    GameGridComponent
+    GameGridComponent,
+    RandomAIComponent
   ],
   imports: [
     BrowserModule,
