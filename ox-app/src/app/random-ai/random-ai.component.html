@@ -1,5 +1,15 @@
-<p>Player Turn: {{getTurn()}}</p>
-<button type="button" (click)="randomMove()">Random Move</button>
-<button (click)="resetGrid()">Reset</button>
-<p>Win: {{this.getWin()}}</p>
-
+<div><p>Player Turn: {{getTurn()}}</p></div>
+<div [hidden]="getWin()">
+  <div [hidden]="this.getTurn()" >
+    <div [hidden]="getDraw()">
+  <button type="button" (click)="randomMove()">Random Move</button>
+  </div>
+  </div>
+</div>
+<div>
+  <button (click)="resetGrid()">Reset</button>
+</div>
+<div [hidden]="!getWin()">
+  <div><p>Win: {{this.getWin()}}</p></div>
+  <div><p>Draw: {{this.getDraw()}}</p></div>
+</div>

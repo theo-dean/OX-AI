@@ -22,6 +22,9 @@ export class RandomAIComponent implements OnInit {
   getWin(): boolean {
     return this.gameStateService.checkWin();
   }
+  getDraw(): boolean {
+    return this.gameStateService.checkDraw();
+  }
   resetGrid(): void {
     this.gameStateService.reset();
   }

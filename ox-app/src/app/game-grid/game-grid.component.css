@@ -1,10 +1,8 @@
 * {
   background: cadetblue;
 }
-
-
 .grid-container {
-  display: grid;
+  display: inline-grid;
   grid-template-columns: 256px 256px 256px;
   grid-template-rows: 256px 256px 256px;
   padding: 5px;
@@ -16,4 +14,7 @@
   font-size: 30px;
 }
 
+div {
+  float: left;
+}
 
