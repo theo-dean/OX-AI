@@ -22,7 +22,7 @@ public class Board {
     public String toString() {
         char[] grid = new char[9];
         for (int i = 0; i < states.length; i++) {
-            switch (states[i]) {
+            switch (getStates(i)) {
                 case (0):
                     grid[i] = '-';
                     break;
