@@ -1,6 +1,8 @@
+package Game;
+
 public class Board {
     int[] states;   //Array with integer representation for states of each cell on the board.
-    //Where: 0 - empty, 1 - naught, 2 - cross.
+    //Where: 0 - empty, 1 - cross, 2 - naught. (This matches the front-end system)
 
     public Board() {
         this.states = new int[9];
@@ -14,10 +16,16 @@ public class Board {
         return this.states[pos];
     }
 
-    public static void main(String[] args) {
-        Board board = new Board();
-        System.out.println(board.toString());
+    public void setStates(int[] states){       //This method is not well implemented. Rework.
+        if (states.length == 9){
+            for (int i=0;i < 9;i++){
+                this.states[i] = states[i];
+            }
+            return;
+        }
+        System.out.println(states.length+" states were supplied. 9 states are required.");
     }
+
 
     public String toString() {
         char[] grid = new char[9];
@@ -27,10 +35,10 @@ public class Board {
                     grid[i] = '-';
                     break;
                 case (1):
-                    grid[i] = 'O';
+                    grid[i] = 'X';
                     break;
                 case (2):
-                    grid[i] = 'X';
+                    grid[i] = 'O';
                     break;
             }
         }
