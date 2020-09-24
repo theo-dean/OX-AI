@@ -5,17 +5,17 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class GameStateService {
-  private grid: boolean[] = [null, null, null, null, null, null, null, null, null];
+  private grid: number[] = [0, 0, 0, 0, 0, 0, 0, 0, 0]; // 0 = no move, 1 = x (player move), 2 = o (computer move)
   private playerTurn = true;
   private playerWin = null;
   private draw = null;
   constructor() { }
 
-  getGrid(): boolean[]{
+  getGrid(): number[]{
     return this.grid;
   }
 
-  getGridPos(gridPos: number): boolean{
+  getGridPos(gridPos: number): number{
     return(this.grid[gridPos]);
   }
 
@@ -24,35 +24,35 @@ export class GameStateService {
   }
 
   reset(): void {
-    this.grid = [null, null, null, null, null, null, null, null, null];
+    this.grid = [0, 0, 0, 0, 0, 0, 0, 0, 0];
     this.playerTurn = true;
   }
 
   changeGrid(gridPos: number, state: string): boolean{
-    if (this.grid[gridPos] !== null){
+    if (this.grid[gridPos] !== 0){
       return false;
     }
     switch (state) {
       case 'x': // Player Move
         if (this.getTurn()){
-          this.grid[gridPos] = true;
+          this.grid[gridPos] = 1;
           this.playerTurn = false;
         }
         break;
       case 'o':
-        this.grid[gridPos] = false;
+        this.grid[gridPos] = 2;
         this.playerTurn = true;
         break;
       case null:
-        this.grid[gridPos] = null;
+        this.grid[gridPos] = 0;
         break;
     }
     return true;
   }
 
   checkDraw(): boolean {
-    for (let gridPos of this.grid){
-      if (gridPos === null){
+    for (const gridPos of this.grid){
+      if (gridPos === 0){
         return false;
       }
     }

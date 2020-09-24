@@ -10,21 +10,22 @@ export class GameGridComponent implements OnInit {
   constructor(private gameStateService: GameStateService) { }
 
 
-  getGrid(gridPos: number): boolean{
+  getGrid(gridPos: number): number{
     return(this.gameStateService.getGridPos(gridPos));
   }
 
   getImage(gridPos: number): string{
-    if (this.getGrid(gridPos) === true){
+    if (this.getGrid(gridPos) === 1){
       return 'assets/x.jpg';
     }
-    if (this.getGrid(gridPos) === false){
+    if (this.getGrid(gridPos) === 2){
       return 'assets/o.jpg';
     }
   }
 
   changeGrid(gridPos: number){
     this.gameStateService.changeGrid(gridPos, 'x');
+    console.log(this.gameStateService.getGrid());
   }
 
   ngOnInit(): void {
