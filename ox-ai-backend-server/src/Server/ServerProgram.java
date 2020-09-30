@@ -1,5 +1,7 @@
 package Server;
 
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
 import java.net.ServerSocket;
 import java.net.Socket;
 
@@ -20,7 +22,7 @@ public class ServerProgram {
             while (true) {
                 Socket socket = serverSocket.accept();
                 System.out.println("Connected");
-                new Thread(new ClientHandler(socket, new Server()));
+                new Thread(new ClientHandler(socket, new Server())).start();
             }
 
 

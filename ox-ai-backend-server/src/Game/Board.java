@@ -8,6 +8,10 @@ public class Board {
         this.states = new int[9];
     }
 
+    public Board(int[] states){
+        this.states = states.clone();
+    }
+
     int[] getStates() {
         return this.states;
     }

@@ -12,8 +12,10 @@ class Client {
         try {
             Socket socket = new Socket("localhost", port);
             Scanner scanner = new Scanner(socket.getInputStream());
-            PrintWriter writer = new PrintWriter(socket.getOutputStream());
+            PrintWriter writer = new PrintWriter(socket.getOutputStream(), true);
             writer.println("solve 010200112");
+            System.out.println(scanner.nextLine());
+            System.out.println("DONE");
         } catch (Exception e) {
             e.printStackTrace();
         }
