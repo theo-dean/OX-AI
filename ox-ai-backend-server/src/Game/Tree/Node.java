@@ -6,7 +6,8 @@ import java.util.LinkedList;
 public class Node {
     private Board data;
     private Node root;
-    private LinkedList<Node> children;
+    private Node leftMostChild;
+    private Node rightSibling;
 
     Node(Board data){       //Root node constructor
         this.data = data;
@@ -18,15 +19,32 @@ public class Node {
         this.root = root;
     }
 
-    void addChild(Board data){
-        if (children == null){
-            children = new LinkedList<>();   //Maybe should initialise in constructor? memory vs computations
+    void addChild(Board data){      //Adds a child node to this node
+        if (leftMostChild == null) {        //If no children exist, this will be the left most child node
+            leftMostChild = new Node(data, this);
+        } else {
+            Node temp = leftMostChild;
+            while (temp.getRightSibling() != null){     //If at least 1 child already exists, find the "end" child, and become the right sibling of that child
+                temp = temp.getRightSibling();
+            }
+            try {
+                temp.addRightSibling(data);
+            } catch (Exception e){
+                e.printStackTrace();
+            }
         }
-        children.add(new Node(data, this));
+    }
+
+    void addRightSibling(Board data) throws Exception{
+        if (getRightSibling() == null){
+            rightSibling = new Node(data, this);
+        } else {
+            throw new Exception("Right sibling already exists.");
+        }
     }
 
     boolean isLeaf(){
-        return children == null;        //Could also check if children is empty
+        return leftMostChild == null;        //Could also check if children is empty
     }
 
     boolean isRoot(){
@@ -35,5 +53,17 @@ public class Node {
 
     Board getData(){
         return this.data;
+    }
+
+    Node getLeftMostChild(){
+        return leftMostChild;
+    }
+
+    Node getRightSibling(){
+        return rightSibling;
+    }
+
+    public String toString(){
+        return data.toString();
     }
 }
