@@ -35,7 +35,7 @@ public class Node {
         }
     }
 
-    void addRightSibling(Board data) throws Exception{
+   private void addRightSibling(Board data) throws Exception{
         if (getRightSibling() == null){
             rightSibling = new Node(data, this);
         } else {
