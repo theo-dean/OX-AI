@@ -1,15 +1,22 @@
 import { Injectable } from '@angular/core';
-
+enum gridState {
+  blank,
+  player,
+  computer
+}
 
 @Injectable({
   providedIn: 'root'
 })
 export class GameStateService {
-  private grid: number[] = [0, 0, 0, 0, 0, 0, 0, 0, 0]; // 0 = no move, 1 = x (player move), 2 = o (computer move)
+  private grid: number[]; // 0 = no move, 1 = x (player move), 2 = o (computer move)
   private playerTurn = true;
   private playerWin = null;
   private draw = null;
-  constructor() { }
+
+  constructor() {
+    this.grid = Array(9).fill(gridState.blank);
+  }
 
   getGrid(): number[]{
     return this.grid;
@@ -64,35 +71,35 @@ export class GameStateService {
   }
 
   checkWin(): boolean {
-    if (this.grid[0] && this.grid[1] && this.grid[2]){ // X X X
+    if (this.grid[0] === 1 && this.grid[1] === 1 && this.grid[2] === 1) { // X X X
       this.playerWin = true;
       return true;
     }
-    if (this.grid[3] && this.grid[4] && this.grid[5]) {// Row 2
+    if (this.grid[3] === 1 && this.grid[4] === 1 && this.grid[5] === 1) {// Row 2
       this.playerWin = true;
       return true;
     }
-    if (this.grid[6] && this.grid[7] && this.grid[8]){// Row 3
+    if (this.grid[6] === 1 && this.grid[7] === 1 && this.grid[8] === 1){// Row 3
       this.playerWin = true;
       return true;
     }
-    if (this.grid[0] && this.grid[3] && this.grid[6]) {// Column 1
+    if (this.grid[0] === 1 && this.grid[3] === 1 && this.grid[6] === 1) {// Column 1
       this.playerWin = true;
       return true;
     }
-    if (this.grid[1] && this.grid[4] && this.grid[7]){// Column 2
+    if (this.grid[1] === 1 && this.grid[4] === 1 && this.grid[7] === 1){// Column 2
       this.playerWin = true;
       return true;
     }
-    if (this.grid[2] && this.grid[5] && this.grid[8]){// Column 3
+    if (this.grid[2] === 1 && this.grid[5] === 1 && this.grid[8] === 1){// Column 3
       this.playerWin = true;
       return true;
     }
-    if (this.grid[0] && this.grid[4] && this.grid[8]){// Diagonal 1
+    if (this.grid[0] === 1 && this.grid[4] === 1 && this.grid[8] === 1){// Diagonal 1
       this.playerWin = true;
       return true;
     }
-    if (this.grid[2] && this.grid[4] && this.grid[6]){// Diagonal 2
+    if (this.grid[2] === 1 && this.grid[4] === 1 && this.grid[6] === 1){// Diagonal 2
       this.playerWin = true;
       return true;
     }
