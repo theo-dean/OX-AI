@@ -25,7 +25,6 @@ export class GameGridComponent implements OnInit {
 
   changeGrid(gridPos: number){
     this.gameStateService.changeGrid(gridPos, 'x');
-    console.log(this.gameStateService.getGrid());
   }
 
   ngOnInit(): void {

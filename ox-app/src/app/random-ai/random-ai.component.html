@@ -1,7 +1,7 @@
 <div><p>Player Turn: {{getTurn()}}</p></div>
-<div [hidden]="getWin()">
+<div [hidden]="getState() === 1">
   <div [hidden]="this.getTurn()" >
-    <div [hidden]="getDraw()">
+    <div [hidden]="getState() === 3">
   <button type="button" (click)="randomMove()">Random Move</button>
   </div>
   </div>
@@ -9,7 +9,6 @@
 <div>
   <button (click)="resetGrid()">Reset</button>
 </div>
-<div [hidden]="!getWin()">
-  <div><p>Win: {{this.getWin()}}</p></div>
-  <div><p>Draw: {{this.getDraw()}}</p></div>
+<div [hidden]="getState() === 0 || getState() === 3">
+  <div><p>State: {{this.getStateString()}}</p></div>
 </div>

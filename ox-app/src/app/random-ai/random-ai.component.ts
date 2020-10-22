@@ -19,12 +19,27 @@ export class RandomAIComponent implements OnInit {
   getTurn(): boolean {
     return this.gameStateService.getTurn();
   }
-  getWin(): boolean {
-    return this.gameStateService.checkWin();
+  getState(): number {
+    return this.gameStateService.checkState();
   }
-  getDraw(): boolean {
-    return this.gameStateService.checkDraw();
+
+  getStateString(): string {
+    let state;
+    state = this.gameStateService.checkState();
+    if (state === 0){
+      return 'Active';
+    }
+    if (state === 1){
+      return 'Player Wins!';
+    }
+    if (state === 2){
+      return 'Computer Wins!';
+    }
+    if (state === 3){
+      return 'Draw!';
+    }
   }
+
   resetGrid(): void {
     this.gameStateService.reset();
   }
