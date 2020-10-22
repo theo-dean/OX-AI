@@ -35,6 +35,8 @@ public class ClientHandler implements Runnable {
                             int[] grid = Arrays.stream(parsed[1].split(""))
                                     .mapToInt(Integer::parseInt)
                                     .toArray();
+                            out.println("DUMMY RESPONSE");
+                            out.flush();
                             //TODO Process grid, output resulting move
                             break;
                         } catch (Exception e) {
