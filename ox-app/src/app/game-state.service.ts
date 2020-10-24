@@ -83,45 +83,6 @@ export class GameStateService {
   }
 
   checkState(): gameState {
-    /*    if ((this.grid[0] === this.grid[1] && this.grid[1] === this.grid[2]) // X X X
-        || (this.grid[0] === this.grid[3] && this.grid[3] === this.grid[6]) // Column 1
-        || (this.grid[0] === this.grid[4] && this.grid[4] === this.grid[8]) // Diagonal 1
-        ){
-          if (this.grid[0] === gridState.player){
-            this.setGameState(gameState.playerWin);
-            return gameState.playerWin;
-          }
-          if (this.grid[0] === gridState.computer){
-            this.setGameState(gameState.playerWin);
-            return gameState.playerWin;
-          }
-        }
-        if ((this.grid[3] === this.grid[4] && this.grid[4] === this.grid[5]) // Row 2
-        || (this.grid[1] === this.grid[4] && this.grid[4] === this.grid[7]) // Column 2
-        || (this.grid[2] === this.grid[4] && this.grid[4] === this.grid[6]) // Diagonal 2
-        ){
-          if (this.grid[4] === gridState.player){
-            this.setGameState(gameState.playerWin);
-            return gameState.playerWin;
-          }
-          if (this.grid[4] === gridState.computer){
-            this.setGameState(gameState.playerWin);
-            return gameState.playerWin;
-          }
-        }
-        if ((this.grid[6] === this.grid[7] && this.grid[7] === this.grid[8]) // Row 3
-        || (this.grid[2] === this.grid[5] && this.grid[5] === this.grid[8]) // Column 3
-        ){
-          if (this.grid[8] === gridState.player){
-            this.setGameState(gameState.playerWin);
-            return gameState.playerWin;
-          }
-          if (this.grid[8] === gridState.computer){
-            this.setGameState(gameState.playerWin);
-            return gameState.playerWin;
-          }
-        }
-        */
     if (this.grid[3] === this.grid[4] && this.grid[4] === this.grid[5]) {// Row 2
       return this.isWin(this.grid[3]);
     }

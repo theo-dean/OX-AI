@@ -23,10 +23,11 @@ public class ClientHandler implements Runnable {
     public void run() {
         System.out.println("Connected: " + socket);
         try {
-            var in = new Scanner(socket.getInputStream());
+            var in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
             var out = new PrintWriter(socket.getOutputStream(), true);
-            while (in.hasNextLine()) {
-                String input = in.nextLine();
+            while (in.ready()) {
+                String input = in.readLine();
+                System.out.println(input);
                 String[] parsed = input.split(" ");
                 switch (parsed[0].toLowerCase()) {
                     case "solve": //Finds next best move for AI in the given state
@@ -36,13 +37,15 @@ public class ClientHandler implements Runnable {
                                     .mapToInt(Integer::parseInt)
                                     .toArray();
                             out.println("DUMMY RESPONSE");
-                            out.flush();
                             //TODO Process grid, output resulting move
                             break;
                         } catch (Exception e) {
                             System.out.println("Reply Exception");
                             e.printStackTrace();
                         }
+                    case "beep":
+                        System.out.println("Beep Request from"+socket);
+                        out.println("Boop");
                 }
             }
         } catch (Exception e) {
