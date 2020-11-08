@@ -16,6 +16,7 @@ export class SmartAiComponent implements OnInit {
   constructor(private backendIoService: BackendIoService) { }
 
   ngOnInit(): void {
+    this.getResponse();
   }
 
   getResponse() {
@@ -23,8 +24,8 @@ export class SmartAiComponent implements OnInit {
   }
 
   logResponse(): void {
-    this.getResponse();
     console.log(this.response);
+    this.getResponse();
   }
 
 }
