@@ -1,6 +1,6 @@
-package Game.Tree;
+package com.theodean.oxbackend.Game.Tree;
 
-import Game.Board;
+import com.theodean.oxbackend.Game.Board;
 import java.util.LinkedList;
 
 public class Node {

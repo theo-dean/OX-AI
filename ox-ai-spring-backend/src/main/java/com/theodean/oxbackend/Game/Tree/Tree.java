@@ -1,6 +1,5 @@
-package Game.Tree;
-
-import Game.Board;
+package com.theodean.oxbackend.Game.Tree;
+import com.theodean.oxbackend.Game.Board;
 
 import java.util.LinkedList;
 
@@ -37,10 +36,10 @@ public class Tree {
             root.addChild(new Board(new int[]{1, 0, 0, 0, 0, 0, 0, 0, 0}));
             root.addChild(new Board(new int[]{0,1,0,0,0,0,0,0,0}));
             root.getLeftMostChild().addChild(new Board(new int[]{1, 1, 0, 0, 0, 0, 0, 0, 0}));
-            System.out.println(root.toString());
-            System.out.println(root.getLeftMostChild().toString());
-            System.out.println(root.getLeftMostChild().getRightSibling().toString());
-            System.out.println(root.getLeftMostChild().getLeftMostChild().toString());
+            //System.out.println(root.toString());
+            //System.out.println(root.getLeftMostChild().toString());
+            //System.out.println(root.getLeftMostChild().getRightSibling().toString());
+            //System.out.println(root.getLeftMostChild().getLeftMostChild().toString());
             printPreOrderTree(root);
         } catch (Exception e){
             e.printStackTrace();
