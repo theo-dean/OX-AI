@@ -44,10 +44,6 @@ export class RandomAIComponent implements OnInit {
     this.gameStateService.reset();
   }
 
-  getMessage() {
-    console.log('DUMMY');
-  }
-
   ngOnInit(): void {
   }
 

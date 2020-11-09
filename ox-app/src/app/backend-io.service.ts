@@ -15,4 +15,8 @@ export class BackendIoService {
   getResponse(): Observable<Greeter> {
     return this.http.get<Greeter>(environment.apiUrl + 'greeting');
   }
+
+  getNamedResponse(name: string): Observable<Greeter> {
+    return this.http.get<Greeter>(environment.apiUrl + 'greeting?name=' + name);
+  }
 }

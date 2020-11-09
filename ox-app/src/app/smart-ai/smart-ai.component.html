@@ -1,1 +1,8 @@
-<p></p>
+<div>
+  <label> Name:
+    <input #name />
+  </label>
+</div>
+<div>
+  <button (click)="getNamedResponse(name.value); name.value=''"> TEST </button>
+</div>
