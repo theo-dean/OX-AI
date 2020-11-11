@@ -130,6 +130,6 @@ export class GameStateService {
         return gameState.active;
       }
     }
-    this.setGameState(gameState.draw);
+    return gameState.draw;
   }
 }

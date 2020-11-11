@@ -7,6 +7,7 @@ public class Tree {
 
     static void printPreOrderTree(Node node){
         System.out.println(node.toString());    //Process (in this context by printing) the current node
+        System.out.println(node.getData().gameStatus());    //Check game status
         if (!node.isLeaf()){
             Node temp = node.getLeftMostChild();    //Expand left child
             while (temp != null){   //if the Left child exists
@@ -36,6 +37,7 @@ public class Tree {
             root.addChild(new Board(new int[]{1, 0, 0, 0, 0, 0, 0, 0, 0}));
             root.addChild(new Board(new int[]{0,1,0,0,0,0,0,0,0}));
             root.getLeftMostChild().addChild(new Board(new int[]{1, 1, 0, 0, 0, 0, 0, 0, 0}));
+            root.getLeftMostChild().getLeftMostChild().addChild(new Board(new int[]{1,1,1,0,0,0,0,0,0}));
             //System.out.println(root.toString());
             //System.out.println(root.getLeftMostChild().toString());
             //System.out.println(root.getLeftMostChild().getRightSibling().toString());
