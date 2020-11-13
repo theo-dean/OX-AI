@@ -17,6 +17,10 @@ public class Tree {
         }
     }
 
+    static void populateTree(Node node){
+
+    }
+
 /*    static void printPostOrder(Node node) {       // Fix Me
         if (!node.isLeaf()) {
             Node temp = node.getLeftMostChild();
