@@ -1,7 +1,6 @@
 package com.theodean.oxbackend.Game;
 
 import java.util.ArrayList;
-import java.util.stream.IntStream;
 
 public class Board {
     enum gameState {
@@ -30,6 +29,29 @@ public class Board {
         return this.states[pos];
     }
 
+    public boolean isWin(){     //returns true if either player or AI has won, or a draw. Returns false if the game is active.
+        return gameStatus() != gameState.ACTIVE;
+    }
+    
+    int getTurn(){
+        int x = 0,o = 0;
+        
+        for(int i=0;i<states.length;i++){
+           if (states[i] == 1){
+               x++;
+           } else if (states[i] == 2){
+               o++;
+           }
+        }
+
+        if(x == o){
+            return 1;
+        } else if(o < x && Math.abs(o-x) == 1) {    //Checking AI has less pieces than player, and that the difference is only 1.
+            return 2;
+        }
+        throw new IllegalStateException("Board is not valid. Player has moved "+x+ " times, and AI "+o+" times.");
+    }
+
     public void setStates(int[] states){       //This method is not well implemented. Rework.
         if (states.length == 9){
             /*for (int i=0;i < 9;i++){
@@ -52,12 +74,20 @@ public class Board {
         return temp;
     }
 
-    public ArrayList<Board> possibleMoves() {
-        return null;
-    }       //TODO: Does this need implementing??
-
-    public boolean isWin(){     //returns true if either player or AI has won, or a draw. Returns false if the game is active.
-        return gameStatus() != gameState.ACTIVE;
+    public ArrayList<Board> possibleMoves() { // Returns an array of possible moves derived from the current board.
+        ArrayList<Board> temp = new ArrayList<>();
+        int tempTurn = getTurn();
+        
+        for (int i=0; i<states.length; i++){
+            if (states[i] == 0){
+                try {
+                    temp.add(makeMove(i, tempTurn));
+                } catch (Exception e){
+                    e.printStackTrace();
+                }
+            }
+        }
+        return temp;
     }
 
     gameState checkState(int winner) {

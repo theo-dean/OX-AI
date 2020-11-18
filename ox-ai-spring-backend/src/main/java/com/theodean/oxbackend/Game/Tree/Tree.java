@@ -1,6 +1,9 @@
 package com.theodean.oxbackend.Game.Tree;
 import com.theodean.oxbackend.Game.Board;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Iterator;
 import java.util.LinkedList;
 
 public class Tree {
@@ -46,7 +49,17 @@ public class Tree {
             //System.out.println(root.getLeftMostChild().toString());
             //System.out.println(root.getLeftMostChild().getRightSibling().toString());
             //System.out.println(root.getLeftMostChild().getLeftMostChild().toString());
-            printPreOrderTree(root);
+            //printPreOrderTree(root);
+            Board tempBoard = new Board(new int[]{1,2,1,1,0,2,0,0,2});
+            ArrayList<Board> temp = tempBoard.possibleMoves();
+            System.out.println(tempBoard);
+            System.out.println("ORIGINAL_BOARD");
+            Iterator<Board> it = temp.iterator();
+            while (it.hasNext()){
+                Board tempIt = it.next();
+                System.out.println(tempIt);
+                System.out.println(tempIt.gameStatus());
+                            }
         } catch (Exception e){
             e.printStackTrace();
         }
