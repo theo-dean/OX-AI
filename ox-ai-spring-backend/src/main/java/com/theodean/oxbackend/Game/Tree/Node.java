@@ -72,6 +72,14 @@ public class Node {
         return rightSibling;
     }
 
+    void setHeuristic(int heuristic){
+        this.heuristic = heuristic;
+    }
+
+    int getHeuristic() {
+        return this.heuristic;
+    }
+
     public String toString() {
         return data.toString();
     }

@@ -31,19 +31,21 @@ public class Tree {
         }
     }
 
-/*    static void printPostOrder(Node node) {       // Fix Me
-        if (!node.isLeaf()) {
-            Node temp = node.getLeftMostChild();
-            while (temp != null) {
-                printPostOrder(temp);
-                temp = temp.getRightSibling();
-            }
+    /** Returns a numerical representation of the heuristic value of a Node. */
+    static int evaluationFunction(Node node){
+        if (node.getData().gameStatus() == Board.gameState.PLAYER_WIN){
+            return -1;
         }
-        else {
-            System.out.println(node.toString());
+        if (node.getData().gameStatus() == Board.gameState.AI_WIN){
+            return 1;
         }
-    }*/
+        else return 0;
+    }
 
+    /** Performs the minmax function; setting the heuristic value of all nodes (other than root). */
+    static void minMax(Node root, boolean maximising){
+
+    }
 
     public static void main(String[] args){
         try {
