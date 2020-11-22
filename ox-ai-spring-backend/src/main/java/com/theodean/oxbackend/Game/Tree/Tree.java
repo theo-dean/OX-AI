@@ -42,9 +42,30 @@ public class Tree {
         else return 0;
     }
 
-    /** Performs the minmax function; setting the heuristic value of all nodes (other than root). */
-    static void minMax(Node root, boolean maximising){
+    /** Performs the minmax function; calculating the move that best minimises loss (and maximises gain). */
+    static int minMax(Node node, boolean maximising){
+        if (node.isLeaf()){
+            return evaluationFunction(node);
+        }
+        if (maximising){
+            int val = Integer.MIN_VALUE;
+            Node temp = node.getLeftMostChild();
+            while (temp != null){
+                val = Integer.max(val, minMax(temp, false));
+                temp = temp.getRightSibling();
+            }
+            return val;
+        }
+        else {
+            int val = Integer.MAX_VALUE;
+            Node temp = node.getLeftMostChild();
+            while (temp != null){
+                val = Integer.min(val, minMax(temp, true));
+                temp = temp.getRightSibling();
+            }
+        }
 
+        return 0;
     }
 
     public static void main(String[] args){
@@ -59,10 +80,11 @@ public class Tree {
             //System.out.println(root.getLeftMostChild().getRightSibling().toString());
             //System.out.println(root.getLeftMostChild().getLeftMostChild().toString());
             //printPreOrderTree(root);
-            Board tempBoard = new Board(new int[]{1,0,0,2,1,1,2,0,2});
-            Node root = new Node(tempBoard);
-            populateTree(root);
-            printPreOrderTree(root);
+            //Board tempBoard = new Board(new int[]{1,0,0,2,1,1,2,0,2});
+            //Node root = new Node(tempBoard);
+            //populateTree(root);
+            //printPreOrderTree(root);
+            System.out.println(Integer.MIN_VALUE);
 
         } catch (Exception e){
             e.printStackTrace();
