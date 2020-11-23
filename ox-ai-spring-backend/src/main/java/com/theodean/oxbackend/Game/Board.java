@@ -19,7 +19,7 @@ public class Board {
     }
 
     public Board(int[] states) {
-        this.states = states.clone();
+        this.states = states;
     }
 
     int[] getStates() {
@@ -72,9 +72,9 @@ public class Board {
     }
 
     Board makeMove(int pos, int player) throws Exception {
-        if (isWin()) {
+       /* if (isWin()) {
             throw new Exception("Attempting to further a board that is already won/lost/drawn.");
-        }
+        }*/
         Board temp = new Board(states);
         temp.states[pos] = player;
         return temp;
@@ -163,6 +163,17 @@ public class Board {
         }
 
         return gameState.DRAW;
+    }
+
+    /** Takes a subsequent board, and returns the grid reference of the move. */
+    /* Assumes only one move difference; TODO: handle errors*/
+    public int gridDifference(Board incrementedBoard) throws Exception{
+        for (int i=0; i<states.length; i++){
+            if (incrementedBoard.getStates()[i] != states[i]){
+                return i;
+            }
+        }
+        throw new Exception("Board provided is the same.");
     }
 
     public String toString() {

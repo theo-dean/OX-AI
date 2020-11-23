@@ -10,6 +10,7 @@ public class Tree {
     static void printPreOrderTree(Node node){
         System.out.println(node.toString());    //Process (in this context by printing) the current node
         System.out.println(node.getData().gameStatus());    //Check game status
+        //System.out.println("Heuristic: "+ node.getHeuristic()); //Check the heuristic value of the node (null if not processed)
         if (!node.isLeaf()){
             Node temp = node.getLeftMostChild();    //Expand left child
             while (temp != null){   //if the Left child exists
@@ -63,28 +64,44 @@ public class Tree {
                 val = Integer.min(val, minMax(temp, true));
                 temp = temp.getRightSibling();
             }
+            return val;
         }
-
-        return 0;
     }
 
-    public static void main(String[] args){
+    /** Returns the grid reference of the best move for the AI (naught) player from the given game. */
+    public static int bestMoveNaught(Node node) throws Exception{
+        populateTree(node);
+
+        Node temp = node.getLeftMostChild();
+        int maxHeuristic = Integer.MIN_VALUE;
+        int move = 0;
+        while(temp != null){
+            if (evaluationFunction(temp) == 1) { // If the move is a winning one, pick it.
+                return node.getData().gridDifference(temp.getData());
+            }
+            if (minMax(temp, true) > maxHeuristic){
+                maxHeuristic = temp.getHeuristic();
+                move = node.getData().gridDifference(temp.getData());
+            }
+            temp = temp.getRightSibling();
+        }
+        return move;
+    }
+
+    public static void main(String[] args){ // Messy test method; todo: clean this shit up
         try {
-            /*Node root = new Node(new Board(new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0}));
+/*            Node root = new Node(new Board(new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0}));
             root.addChild(new Board(new int[]{1, 0, 0, 0, 0, 0, 0, 0, 0}));
             root.addChild(new Board(new int[]{0,1,0,0,0,0,0,0,0}));
             root.getLeftMostChild().addChild(new Board(new int[]{1, 1, 0, 0, 0, 0, 0, 0, 0}));
             root.getLeftMostChild().getLeftMostChild().addChild(new Board(new int[]{1,1,1,0,0,0,0,0,0}));*/
-            //System.out.println(root.toString());
-            //System.out.println(root.getLeftMostChild().toString());
-            //System.out.println(root.getLeftMostChild().getRightSibling().toString());
-            //System.out.println(root.getLeftMostChild().getLeftMostChild().toString());
-            //printPreOrderTree(root);
-            //Board tempBoard = new Board(new int[]{1,0,0,2,1,1,2,0,2});
-            //Node root = new Node(tempBoard);
+
+            Board tempBoard = new Board(new int[]{2,1,2,1,0,1,0,2,0});
+            Node root = new Node(tempBoard);
             //populateTree(root);
+            //minMax(root, false);
             //printPreOrderTree(root);
-            System.out.println(Integer.MIN_VALUE);
+            System.out.println(bestMoveNaught(root));
 
         } catch (Exception e){
             e.printStackTrace();

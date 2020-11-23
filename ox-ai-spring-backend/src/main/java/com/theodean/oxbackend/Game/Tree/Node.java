@@ -12,7 +12,7 @@ public class Node {
     private Node rightSibling;
 
     //TODO: write javadoc for this class
-    Node(Board data) {       //Root node constructor
+    public Node(Board data) {       //Root node constructor
         this.data = data;
         this.root = null;
     }
