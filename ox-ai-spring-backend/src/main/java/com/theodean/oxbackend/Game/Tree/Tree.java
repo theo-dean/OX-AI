@@ -85,6 +85,7 @@ public class Tree {
             }
             temp = temp.getRightSibling();
         }
+        System.out.println(move);
         return move;
     }
 
@@ -96,7 +97,7 @@ public class Tree {
             root.getLeftMostChild().addChild(new Board(new int[]{1, 1, 0, 0, 0, 0, 0, 0, 0}));
             root.getLeftMostChild().getLeftMostChild().addChild(new Board(new int[]{1,1,1,0,0,0,0,0,0}));*/
 
-            Board tempBoard = new Board(new int[]{2,1,2,1,0,1,0,2,0});
+            Board tempBoard = new Board(new int[]{1,1,0,2,1,1,2,0,2});
             Node root = new Node(tempBoard);
             //populateTree(root);
             //minMax(root, false);

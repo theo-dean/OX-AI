@@ -1,12 +1,12 @@
 import {Injectable} from '@angular/core';
 
-enum gridState {
+export enum gridState {
   blank,
   player,
   computer
 }
 
-enum gameState {
+export enum gameState {
   active,
   playerWin,
   computerWin,
@@ -33,6 +33,10 @@ export class GameStateService {
 
   getGridPos(gridPos: gridState): number {
     return (this.grid[gridPos]);
+  }
+
+  getGridString(): string {
+    return this.grid.join('');
   }
 
   getTurn(): boolean {  // Returns True if it is the Player's turn, and False if it is the Computer's turn

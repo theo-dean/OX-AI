@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {BackendIoService} from '../backend-io.service';
 import { Greeter } from '../Greeter';
+import {Move} from '../Move';
+import {GameStateService} from '../game-state.service';
 
 @Component({
   selector: 'app-smart-ai',
@@ -11,9 +13,11 @@ import { Greeter } from '../Greeter';
 
 export class SmartAiComponent implements OnInit {
 
-  response: Greeter;
+  grid: string;
+  response;
+  moveResponse: Move;
 
-  constructor(private backendIoService: BackendIoService) { }
+  constructor(private backendIoService: BackendIoService, private gameStateService: GameStateService) { }
 
   ngOnInit(): void {
   }
@@ -32,6 +36,20 @@ export class SmartAiComponent implements OnInit {
         this.response = { ...data};
         console.log(this.response);
       });
+  }
+
+  getSmartMove(){
+    this.grid = this.gameStateService.getGridString();
+    this.backendIoService.getSmartMove(this.grid)
+      .subscribe((data) => {
+        this.moveResponse = {...data};
+        console.log(this.moveResponse);
+        this.makeSmartMove(this.moveResponse.move);
+      });
+  }
+
+  makeSmartMove(gridPos: number){
+    this.gameStateService.changeGrid(gridPos, 'o');
   }
 
 }

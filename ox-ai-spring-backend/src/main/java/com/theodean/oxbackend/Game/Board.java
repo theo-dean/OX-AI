@@ -19,7 +19,7 @@ public class Board {
     }
 
     public Board(int[] states) {
-        this.states = states;
+        this.states = states.clone();
     }
 
     int[] getStates() {

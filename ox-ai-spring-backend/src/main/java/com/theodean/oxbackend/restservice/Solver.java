@@ -42,7 +42,6 @@ public class Solver {
         }
 
         Node root = new Node(new Board(arr));
-        System.out.println(root.toString());
-        System.out.println(Tree.bestMoveNaught(root));
+        this.move = Tree.bestMoveNaught(root);
     }
 }
