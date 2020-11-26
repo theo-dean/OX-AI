@@ -10,7 +10,7 @@ public class Tree {
     static void printPreOrderTree(Node node){
         System.out.println(node.toString());    //Process (in this context by printing) the current node
         System.out.println(node.getData().gameStatus());    //Check game status
-        //System.out.println("Heuristic: "+ node.getHeuristic()); //Check the heuristic value of the node (null if not processed)
+        System.out.println("Heuristic: "+ node.getHeuristic()); //Check the heuristic value of the node (null if not processed)
         if (!node.isLeaf()){
             Node temp = node.getLeftMostChild();    //Expand left child
             while (temp != null){   //if the Left child exists
@@ -40,28 +40,31 @@ public class Tree {
         if (node.getData().gameStatus() == Board.gameState.AI_WIN){
             return 1;
         }
-        else return 0;
+        else return 0;  // Draw
     }
 
     /** Performs the minmax function; calculating the move that best minimises loss (and maximises gain). */
     static int minMax(Node node, boolean maximising){
         if (node.isLeaf()){
+            node.setHeuristic(evaluationFunction(node));
             return evaluationFunction(node);
         }
         if (maximising){
-            int val = Integer.MIN_VALUE;
+            int val = -1;
             Node temp = node.getLeftMostChild();
             while (temp != null){
                 val = Integer.max(val, minMax(temp, false));
+                node.setHeuristic(val);
                 temp = temp.getRightSibling();
             }
             return val;
         }
         else {
-            int val = Integer.MAX_VALUE;
+            int val = 1;
             Node temp = node.getLeftMostChild();
             while (temp != null){
                 val = Integer.min(val, minMax(temp, true));
+                node.setHeuristic(val);
                 temp = temp.getRightSibling();
             }
             return val;
@@ -85,7 +88,6 @@ public class Tree {
             }
             temp = temp.getRightSibling();
         }
-        System.out.println(move);
         return move;
     }
 
@@ -97,11 +99,13 @@ public class Tree {
             root.getLeftMostChild().addChild(new Board(new int[]{1, 1, 0, 0, 0, 0, 0, 0, 0}));
             root.getLeftMostChild().getLeftMostChild().addChild(new Board(new int[]{1,1,1,0,0,0,0,0,0}));*/
 
-            Board tempBoard = new Board(new int[]{1,1,0,2,1,1,2,0,2});
+            Board tempBoard = new Board(new int[]{1,2,0,0,1,0,0,0,0});
             Node root = new Node(tempBoard);
             //populateTree(root);
             //minMax(root, false);
             //printPreOrderTree(root);
+            //System.out.println(minMax(root,true));
+            printPreOrderTree(root);
             System.out.println(bestMoveNaught(root));
 
         } catch (Exception e){
