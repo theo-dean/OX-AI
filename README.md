@@ -51,5 +51,6 @@ When the user requests the opponent's move, the frontend app queuries the backen
 
 ### Backend
 The backend uses Swing, and is written in Java.
-The backend is essentially a REST service, that responds to 
+The backend is essentially a REST service, that responds to solve requests from the front-end.
+The backend returns the grid reference of the best move for the AI Agent.
             
