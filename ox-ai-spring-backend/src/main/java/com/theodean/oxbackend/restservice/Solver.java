@@ -4,8 +4,6 @@ import com.theodean.oxbackend.Game.Board;
 import com.theodean.oxbackend.Game.Tree.Node;
 import com.theodean.oxbackend.Game.Tree.Tree;
 
-import java.util.Arrays;
-
 public class Solver {
     private final String boardState;
     private int move;

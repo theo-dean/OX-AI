@@ -90,27 +90,4 @@ public class Tree {
         }
         return move;
     }
-
-    public static void main(String[] args){ // Messy test method; todo: clean this shit up
-        try {
-/*            Node root = new Node(new Board(new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0}));
-            root.addChild(new Board(new int[]{1, 0, 0, 0, 0, 0, 0, 0, 0}));
-            root.addChild(new Board(new int[]{0,1,0,0,0,0,0,0,0}));
-            root.getLeftMostChild().addChild(new Board(new int[]{1, 1, 0, 0, 0, 0, 0, 0, 0}));
-            root.getLeftMostChild().getLeftMostChild().addChild(new Board(new int[]{1,1,1,0,0,0,0,0,0}));*/
-
-            Board tempBoard = new Board(new int[]{1,2,0,0,1,0,0,0,0});
-            Node root = new Node(tempBoard);
-            //populateTree(root);
-            //minMax(root, false);
-            //printPreOrderTree(root);
-            //System.out.println(minMax(root,true));
-            printPreOrderTree(root);
-            System.out.println(bestMoveNaught(root));
-
-        } catch (Exception e){
-            e.printStackTrace();
-        }
-
-    }
 }
